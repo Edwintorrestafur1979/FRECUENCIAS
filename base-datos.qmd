@@ -1,0 +1,30 @@
+---
+title: "Base de datos: sector"
+format: html
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readxl)
+library(DT)
+
+sector <- read_excel("Datos/sector.xlsx", sheet = 1)
+
+idioma <- list(url = "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json")
+
+datatable(
+  sector,
+  filter = "top",
+  extensions = "Buttons",
+  options = list(
+    pageLength = 15,
+    scrollX = TRUE,
+    dom = "Bfrtip",
+    buttons = c("copy", "csv", "excel"),
+    language = idioma
+  )
+)
+```
